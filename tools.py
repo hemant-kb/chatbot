@@ -1,7 +1,6 @@
 
 """
 Tools Module - Handles RAG (Document Retrieval) and Stock Analysis
-This is where the magic happens for document search and stock data analysis!
 """
 import os
 import re
@@ -337,4 +336,5 @@ def format_table_as_markdown(table_data: Dict[str, Any], max_rows: int = None) -
     for row in rows:
         table_rows.append("| " + " | ".join(str(cell) for cell in row) + " |")
     
+
     return "\n".join([header, separator] + table_rows)
