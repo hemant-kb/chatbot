@@ -1,6 +1,5 @@
 """
-LangGraph Chatbot Backend - Your AI-Powered PDF & Stock Analysis Assistant
-This is the brain of the operation - handles conversations, documents, and stock data.
+LangGraph Chatbot Backend - handles conversations, documents, and stock data.
 """
 from typing import Annotated, Iterator, List, Literal, TypedDict
 import os
@@ -805,3 +804,4 @@ def save_message_to_graph(thread_id: str, user_message: str, ai_message: str):
         config=config, 
         values={"messages": new_messages}
     )
+
