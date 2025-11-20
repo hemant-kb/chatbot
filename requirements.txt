@@ -1,19 +1,24 @@
+#pip install -r requirements.txt
+
+# Core Framework
 streamlit
 python-dotenv
 
-pypdf
-PyMuPDF
-
-openai
-langchain-core
-langchain-openai
+# LangChain & LangGraph
+langchain-google-genai
 langchain-community
-langchain-text-splitters
-langchain_google_genai
-
-chromadb
 langgraph
+langchain-core
 langgraph-checkpoint-sqlite
+langchain-text-splitters
 
+# Vector Database
+chromadb
 
+# PDF Processing 
+pymupdf
+pypdf
 
+# Web Scraping
+bs4
+requests
