@@ -2,19 +2,14 @@
 
 **Chatbot** built with **LangGraph**, **Google Gemini**, **ChromaDB**, and **Streamlit**, offering intelligent document-based Q&A, Indian stock market analysis, and multi-threaded chat management — all with real-time streaming and persistent state.
 
----
 ### 📄 PDF Document Analysis
 - Ask questions directly from the uploaded PDF 
 - Text-based PDF ingestion (no OCR)
-
----
 
 ### 📊 Indian Stock Market Analysis
 - Fetches NSE/BSE companies latest financial data: (quarterly results, P&L, balance sheet, ratios, cash flow, shareholding) using Screener.in API  
 - LLM-powered stock symbol extraction and matching  
 - Automated insights and investment-style analysis  
-
----
 
 ### 🖥️ Modern Streamlit UI
 - Clean, minimal, dark-theme-friendly design  
@@ -26,9 +21,6 @@
 - Document status and feature availability indicators  
 - True token-by-token streaming responses  
 - Live progress indicators during processing 
-
----
-
 
 ## 📐 High-Level Overview
 
