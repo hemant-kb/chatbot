@@ -11,6 +11,7 @@ langgraph
 langchain-core
 langgraph-checkpoint-sqlite
 langchain-text-splitters
+langchain_huggingface
 
 # Vector Database
 chromadb
@@ -22,3 +23,4 @@ pypdf
 # Web Scraping
 bs4
 requests
+
