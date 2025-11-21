@@ -12,7 +12,8 @@ from dotenv import load_dotenv
 
 # LangChain essentials
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
-from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+#from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace, HuggingFaceEndpointEmbeddings
 from langchain_core.documents import Document
 from langchain_community.vectorstores import Chroma
 
@@ -36,29 +37,42 @@ import scrap
 # ============================================================================ #
 load_dotenv()
 
-deployment_name = os.getenv("AZURE_OPENAI_DEPLOYMENT")
-azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-#api_key = os.getenv("AZURE_OPENAI_API_KEY")
-api_key = os.getenv("GOOGLE_API_KEY")
-api_version = os.getenv("AZURE_OPENAI_API_VERSION")
-embedding_deployment = os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-ada-002")
+#api_key = os.getenv("GOOGLE_API_KEY")
+api_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 # ============================================================================ #
 # Initialize AI Models
 # ============================================================================ #
 
 
-llm = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash",
-    google_api_key=api_key,
-    temperature=0.7,
-    max_output_tokens=300
+# llm = ChatGoogleGenerativeAI(
+#     model="gemini-2.0-flash",
+#     google_api_key=api_key,
+#     temperature=0.7,
+#     max_output_tokens=300
+# )
+
+# embeddings = GoogleGenerativeAIEmbeddings(
+#     model="gemini-embedding-001",
+#     google_api_key=api_key,
+#     task_type="retrieval_document"
+# )
+
+
+model = HuggingFaceEndpoint(
+    repo_id="katanemo/Arch-Router-1.5B",
+    huggingfacehub_api_token=api_key,
+    temperature=0.3,
+    max_new_tokens=300,
+    task="text-generation"
 )
 
-embeddings = GoogleGenerativeAIEmbeddings(
-    model="gemini-embedding-001",
-    google_api_key=api_key,
-    task_type="retrieval_document"
+# Wrap with ChatHuggingFace
+llm = ChatHuggingFace(llm=model)
+
+embeddings = HuggingFaceEndpointEmbeddings(
+    model="google/embeddinggemma-300m",
+    huggingfacehub_api_token=api_key
 )
 
 
@@ -804,4 +818,5 @@ def save_message_to_graph(thread_id: str, user_message: str, ai_message: str):
         config=config, 
         values={"messages": new_messages}
     )
+
 
