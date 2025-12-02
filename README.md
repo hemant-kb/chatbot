@@ -189,7 +189,7 @@ ELSE:
 
 ### RAG Retrieval Strategy
 ```python
-1. User query → Embedding (Azure OpenAI)
+1. User query → Embedding (GoogleGenerativeAIEmbeddings)
 2. Semantic search in Chroma (k=5)
 3. Retrieve top 5 most similar chunks
 4. Combine chunks with metadata
